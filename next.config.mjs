@@ -20,6 +20,14 @@ const nextConfig = {
 
     return compilerConfig;
   })(),
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: `${process.env.NEXT_PUBLIC_API_BASE_PATH}/:match*`,
+  //       deifination: `${process.env.API_BASE_URL}/:match*`,
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;
