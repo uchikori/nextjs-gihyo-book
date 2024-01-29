@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Box marginTop={{ base: 1, md: 2 }}>
+        <Box marginTop={{ base: 1, md: 2 }} theme={theme}>
           <div className={styles.description}>
             <p>
               Get started by editing&nbsp;
