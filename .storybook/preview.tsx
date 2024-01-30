@@ -52,13 +52,13 @@ ol,ul{
 const OriginNextImage = NextImage.default;
 console.log(NextImage);
 
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: (props: any) => {
-    return typeof props.src === 'string' ? (
-      <OriginNextImage {...props} unoptimized blurDataURL={props.src} />
-    ) : (
-      <OriginNextImage {...props} unoptimized />
-    );
-  },
-});
+// Object.defineProperty(NextImage, 'default', {
+//   configurable: true,
+//   value: (props: any) => {
+//     return typeof props.src === 'string' ? (
+//       <OriginNextImage {...props} unoptimized blurDataURL={props.src} />
+//     ) : (
+//       <OriginNextImage {...props} unoptimized />
+//     );
+//   },
+// });

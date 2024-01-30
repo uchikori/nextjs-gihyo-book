@@ -1,3 +1,4 @@
+/* prettier-ignore */
 import styled from 'styled-components';
 import Box, { BoxProps } from '../Box';
 import { theme } from '@/themes';
