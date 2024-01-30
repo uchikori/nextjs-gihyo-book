@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /**
  * Responsiveプロパティ
  * CSSプロパティの値をブレークポイントごとに設定できる

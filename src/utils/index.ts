@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 //fetcherはPromiseオブジェクトを返す非同期関数
 export const fetcher = async (
   resource: RequestInfo,
