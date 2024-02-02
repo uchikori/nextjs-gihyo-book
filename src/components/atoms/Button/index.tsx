@@ -15,37 +15,37 @@ import {
 export type ButtonVariant = 'primary' | 'secondary' | 'danger';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant;
-  fontSize?: Responsive<FontSize>;
-  fontWeight?: Responsive<string>;
-  letterSpacing?: Responsive<LetterSpacing>;
-  lineheight?: Responsive<LineHeights>;
-  textalign?: Responsive<string>;
-  color?: Responsive<Color>;
-  backgroundColor?: Responsive<Color>;
-  width?: Responsive<string>;
-  height?: Responsive<string>;
-  minWidth?: Responsive<string>;
-  minHeight?: Responsive<string>;
-  display?: Responsive<string>;
-  border?: Responsive<string>;
-  overflow?: Responsive<string>;
-  margin?: Responsive<Space>;
-  marginleft?: Responsive<Space>;
-  margintop?: Responsive<Space>;
-  marginright?: Responsive<Space>;
-  marginbottom?: Responsive<Space>;
-  padding?: Responsive<Space>;
-  paddingleft?: Responsive<Space>;
-  paddingtop?: Responsive<Space>;
-  paddingright?: Responsive<Space>;
-  paddingbottom?: Responsive<Space>;
-  pesudoClass?: {
+  $variant?: ButtonVariant;
+  $fontSize?: Responsive<FontSize>;
+  $fontWeight?: Responsive<string>;
+  $letterSpacing?: Responsive<LetterSpacing>;
+  $lineheight?: Responsive<LineHeights>;
+  $textalign?: Responsive<string>;
+  $color?: Responsive<Color>;
+  $backgroundColor?: Responsive<Color>;
+  $width?: Responsive<string>;
+  $height?: Responsive<string>;
+  $minWidth?: Responsive<string>;
+  $minHeight?: Responsive<string>;
+  $display?: Responsive<string>;
+  $border?: Responsive<string>;
+  $overflow?: Responsive<string>;
+  $margin?: Responsive<Space>;
+  $marginleft?: Responsive<Space>;
+  $margintop?: Responsive<Space>;
+  $marginright?: Responsive<Space>;
+  $marginbottom?: Responsive<Space>;
+  $padding?: Responsive<Space>;
+  $paddingleft?: Responsive<Space>;
+  $paddingtop?: Responsive<Space>;
+  $paddingright?: Responsive<Space>;
+  $paddingbottom?: Responsive<Space>;
+  $pesudoClass?: {
     hover?: {
-      backgroundColor?: Responsive<Color>;
+      $backgroundColor?: Responsive<Color>;
     };
     disabled?: {
-      backgroundColor?: Responsive<Color>;
+      $backgroundColor?: Responsive<Color>;
     };
   };
 };
@@ -100,66 +100,66 @@ const variants = {
 const Button = styled.button<ButtonProps>`
   ${(props) => {
     console.log(props);
-    const { variant, color, backgroundColor, pesudoClass, theme } = props;
+    const { $variant, $color, $backgroundColor, $pesudoClass, theme } = props;
     //バリアントのスタイルの適用
-    if (variant && variants[variant]) {
+    if ($variant && variants[$variant]) {
       const styles = []; //CSS用の空配列
       //StoryBookのargsもしくはargtypeにおいてcolorが設定されていない場合
-      !color &&
-        styles.push(toPropValue('color', variants[variant].color, theme));
+      !$color &&
+        styles.push(toPropValue('color', variants[$variant].color, theme));
       //StoryBookのargsもしくはargtypeにおいてbackgroundColorが設定されていない場合
-      !backgroundColor &&
+      !$backgroundColor &&
         styles.push(
           toPropValue(
             'background-color',
-            variants[variant].backgroundColor,
+            variants[$variant].backgroundColor,
             theme,
           ),
         );
       //StoryBookのargsもしくはargtypeにおいてぺすどClassの
-      !pesudoClass &&
+      !$pesudoClass &&
         styles.push(
           `&:hover{
-            ${toPropValue('background-color', variants[variant].pesudoClass.hover.backgroundColor, theme)}
+            ${toPropValue('background-color', variants[$variant].pesudoClass.hover.backgroundColor, theme)}
           }`.replaceAll('\n', ''),
         );
-      !pesudoClass &&
+      !$pesudoClass &&
         styles.push(
           `&:disabled{
-            ${toPropValue('background-color', variants[variant].pesudoClass.hover.backgroundColor, theme)}
+            ${toPropValue('background-color', variants[$variant].pesudoClass.hover.backgroundColor, theme)}
           }`.replaceAll('\n', ''),
         );
       return styles.join('\n');
     }
   }}
-  ${(props) => toPropValue('font-size', props.fontSize, props.theme)}
-  ${(props) => toPropValue('letter-spacing', props.letterSpacing, props.theme)}
-  ${(props) => toPropValue('line-height', props.lineheight, props.theme)}
-  ${(props) => toPropValue('color', props.color, props.theme)}
+  ${(props) => toPropValue('font-size', props.$fontSize, props.theme)}
+  ${(props) => toPropValue('letter-spacing', props.$letterSpacing, props.theme)}
+  ${(props) => toPropValue('line-height', props.$lineheight, props.theme)}
+  ${(props) => toPropValue('color', props.$color, props.theme)}
   ${(props) =>
-    toPropValue('background-color', props.backgroundColor, props.theme)}
-  ${(props) => toPropValue('width', props.width, props.theme)}
-  ${(props) => toPropValue('height', props.height, props.theme)}
-  ${(props) => toPropValue('min-width', props.minWidth, props.theme)}
-  ${(props) => toPropValue('min-height', props.minHeight, props.theme)}
-  ${(props) => toPropValue('display', props.display, props.theme)}
-  ${(props) => toPropValue('border', props.border, props.theme)}
-  ${(props) => toPropValue('overflow', props.overflow, props.theme)}
-  ${(props) => toPropValue('margin', props.margin, props.theme)}
-  ${(props) => toPropValue('margin-top', props.margintop, props.theme)}
-  ${(props) => toPropValue('margin-left', props.marginleft, props.theme)}
-  ${(props) => toPropValue('margin-right', props.marginright, props.theme)}
-  ${(props) => toPropValue('margin-bottom', props.marginbottom, props.theme)}
-  ${(props) => toPropValue('padding', props.padding, props.theme)}
-  ${(props) => toPropValue('padding-left', props.paddingleft, props.theme)}
-  ${(props) => toPropValue('padding-top', props.paddingtop, props.theme)}
-  ${(props) => toPropValue('padding-right', props.paddingright, props.theme)}
-  ${(props) => toPropValue('padding-bottom', props.paddingbottom, props.theme)}
+    toPropValue('background-color', props.$backgroundColor, props.theme)}
+  ${(props) => toPropValue('width', props.$width, props.theme)}
+  ${(props) => toPropValue('height', props.$height, props.theme)}
+  ${(props) => toPropValue('min-width', props.$minWidth, props.theme)}
+  ${(props) => toPropValue('min-height', props.$minHeight, props.theme)}
+  ${(props) => toPropValue('display', props.$display, props.theme)}
+  ${(props) => toPropValue('border', props.$border, props.theme)}
+  ${(props) => toPropValue('overflow', props.$overflow, props.theme)}
+  ${(props) => toPropValue('margin', props.$margin, props.theme)}
+  ${(props) => toPropValue('margin-top', props.$margintop, props.theme)}
+  ${(props) => toPropValue('margin-left', props.$marginleft, props.theme)}
+  ${(props) => toPropValue('margin-right', props.$marginright, props.theme)}
+  ${(props) => toPropValue('margin-bottom', props.$marginbottom, props.theme)}
+  ${(props) => toPropValue('padding', props.$padding, props.theme)}
+  ${(props) => toPropValue('padding-left', props.$paddingleft, props.theme)}
+  ${(props) => toPropValue('padding-top', props.$paddingtop, props.theme)}
+  ${(props) => toPropValue('padding-right', props.$paddingright, props.theme)}
+  ${(props) => toPropValue('padding-bottom', props.$paddingbottom, props.theme)}
   &:hover {
     ${(props) =>
       toPropValue(
         'background-color',
-        props.pesudoClass?.hover?.backgroundColor,
+        props.$pesudoClass?.hover?.$backgroundColor,
         props.theme,
       )}
   }
@@ -167,7 +167,7 @@ const Button = styled.button<ButtonProps>`
     ${(props) =>
       toPropValue(
         'background-color',
-        props.pesudoClass?.disabled?.backgroundColor,
+        props.$pesudoClass?.disabled?.$backgroundColor,
         props.theme,
       )}
   }
@@ -179,16 +179,16 @@ const Button = styled.button<ButtonProps>`
   border: none;
 `;
 Button.defaultProps = {
-  variant: 'primary',
-  paddingleft: 2,
-  paddingright: 2,
-  paddingtop: 1,
-  paddingbottom: 1,
-  color: 'white',
-  display: 'inline-block',
-  textalign: 'center',
-  lineheight: 'inherit',
-  fontSize: 'inherit',
+  $variant: 'primary',
+  $paddingleft: 2,
+  $paddingright: 2,
+  $paddingtop: 1,
+  $paddingbottom: 1,
+  $color: 'white',
+  $display: 'inline-block',
+  $textalign: 'center',
+  $lineheight: 'inherit',
+  $fontSize: 'inherit',
   // theme: theme,
 };
 

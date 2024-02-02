@@ -197,6 +197,16 @@ function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
 
 //与えられたpropがthemeオブジェクトのspaceプロパティに存在するかどうかを判定
 function isSpaceThemeKeys(prop: any, theme: AppTheme): prop is SpaceThemeKeys {
+  /****************
+   * デバッグ用
+   ****************/
+  // console.log(prop);
+  // console.log(theme);
+  // console.log(
+  //   Object.keys(theme.letterSpacing).filter((key) => {
+  //     return key === prop;
+  //   }),
+  // );
   return (
     //spaceオブジェクトのキーを取得し、
     //themeオブジェクト => {
@@ -218,6 +228,16 @@ function isSpaceThemeKeys(prop: any, theme: AppTheme): prop is SpaceThemeKeys {
 }
 
 function isColorThemeKeys(prop: any, theme: AppTheme): prop is ColorThemeKeys {
+  /****************
+   * デバッグ用
+   ****************/
+  // console.log(prop);
+  // console.log(theme);
+  // console.log(
+  //   Object.keys(theme.letterSpacing).filter((key) => {
+  //     return key === prop;
+  //   }),
+  // );
   return (
     //colorsオブジェクトのキーを取得
     //colorsオブジェクト => {
@@ -244,6 +264,16 @@ function isFontSizeThemeKeys(
   prop: any,
   theme: AppTheme,
 ): prop is FontSizeThemeKeys {
+  /****************
+   * デバッグ用
+   ****************/
+  // console.log(prop);
+  // console.log(theme);
+  // console.log(
+  //   Object.keys(theme.letterSpacing).filter((key) => {
+  //     return key === prop;
+  //   }),
+  // );
   return (
     //fontsizeオブジェクトのキーを取得し、
     //themeオブジェクト => {
@@ -272,6 +302,17 @@ function isLetterSpacingThemeKeys(
   prop: any,
   theme: AppTheme,
 ): prop is LetterSpacingThemeKeys {
+  /****************
+   * デバッグ用
+   ****************/
+  // console.log(prop);
+  // console.log(theme);
+  // console.log(
+  //   Object.keys(theme.letterSpacing).filter((key) => {
+  //     return key === prop;
+  //   }),
+  // );
+
   return (
     //letterSpacingオブジェクトののキーを取得し、
     //themeオブジェクト => {
@@ -293,6 +334,16 @@ function isLineHeightThemeKeys(
   prop: any,
   theme: AppTheme,
 ): prop is LineHeightsThemeKeys {
+  /****************
+   * デバッグ用
+   ****************/
+  // console.log(prop);
+  // console.log(theme);
+  // console.log(
+  //   Object.keys(theme.letterSpacing).filter((key) => {
+  //     return key === prop;
+  //   }),
+  // );
   return (
     //lineHeightsオブジェクトののキーを取得し、
     //themeオブジェクト => {

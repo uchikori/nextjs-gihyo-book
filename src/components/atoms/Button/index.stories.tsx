@@ -5,7 +5,7 @@ const meta = {
   title: 'Atoms/Button',
   component: Button,
   argTypes: {
-    variant: {
+    $variant: {
       options: ['primary', 'secondary'],
       control: { type: 'radio' },
       defaultValue: 'primary',
@@ -31,14 +31,14 @@ const meta = {
         type: { summary: 'boolean' },
       },
     },
-    width: {
+    $width: {
       control: { type: 'number' },
       description: '横幅',
       table: {
         type: { summary: 'number' },
       },
     },
-    height: {
+    $height: {
       control: { type: 'number' },
       description: '縦幅',
       table: {
@@ -63,8 +63,9 @@ export const Primary: Story = {
     return <Button {...args} />;
   },
   args: {
-    variant: 'primary',
+    $variant: 'primary',
     children: 'Primary Button',
+    $width: '960px',
   },
 };
 
@@ -73,7 +74,7 @@ export const Secondary: Story = {
     return <Button {...args} />;
   },
   args: {
-    variant: 'secondary',
+    $variant: 'secondary',
     children: 'Secondary Button',
   },
 };
