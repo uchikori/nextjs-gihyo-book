@@ -1,6 +1,7 @@
 /* prettier-ignore */
 import styled from 'styled-components';
 import Box, { BoxProps } from '../Box';
+import { theme } from '@/themes';
 import type {
   CSSPropertyGridArea,
   Responsive,
@@ -8,7 +9,6 @@ import type {
   CSSPropertyGridColumn,
   CSSPropertyGridRow,
 } from '@/types';
-import { theme } from '@/themes';
 import { toPropValue } from '@/utils/styles';
 
 type GridProps = BoxProps & {

@@ -86,7 +86,6 @@ const variants = {
  */
 const Text = styled.span<TextProps>`
   ${(props) => {
-    console.log(props);
     const { $variant, $fontSize, $letterSpacing, $lineHeight, theme } = props;
     //バリアントのスタイルの適用
     if ($variant && variants[$variant]) {

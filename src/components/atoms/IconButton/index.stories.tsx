@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { SearchIcon, CloudUploadIcon, PersonOutlineIcon, CloseIcon } from '.';
+import { SearchIcon, CloudUploadIcon, PersonOutlineIcon } from '.';
 
 const meta = {
   title: 'Atoms/IconButton',

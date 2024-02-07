@@ -1,7 +1,7 @@
 /* prettier-ignore */
 import styled from 'styled-components';
-import type { Responsive } from '@/types';
 import { theme } from '@/themes';
+import type { Responsive } from '@/types';
 import { toPropValue, Color, Space } from '@/utils/styles';
 
 export type BoxProps = {
@@ -42,7 +42,6 @@ const Box = styled.div<BoxProps>`
   ${(props) => toPropValue('overflow', props.overflow, theme)}
   ${(props) => toPropValue('margin', props.margin, theme)}
   ${(props) => {
-    console.log(props);
     return toPropValue('margin-top', props.marginTop, theme);
   }}
   ${(props) => toPropValue('margin-left', props.marginLeft, theme)}

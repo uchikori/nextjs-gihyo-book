@@ -1,6 +1,6 @@
 /* prettier-ignore */
-import styled from "styled-components";
 import Image, { ImageProps } from 'next/image';
+import styled from "styled-components";
 
 type ImageShape = 'circle' | 'square';
 type ShapeImageProps = ImageProps & { shape?: ImageShape };
