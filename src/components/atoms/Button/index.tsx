@@ -99,7 +99,6 @@ const variants = {
  */
 const Button = styled.button<ButtonProps>`
   ${(props) => {
-    console.log(props);
     const { $variant, $color, $backgroundColor, $pesudoClass, theme } = props;
     //バリアントのスタイルの適用
     if ($variant && variants[$variant]) {

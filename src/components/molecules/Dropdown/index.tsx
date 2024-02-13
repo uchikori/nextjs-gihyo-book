@@ -40,16 +40,18 @@ const DropdownPlaceholder = styled.div`
 `;
 
 //ドロップダウンの矢印の外観
-const DropdownArrow = styled.div<{ isOpen?: boolean }>`
+const DropdownArrow = styled.div<{ handleopen?: boolean }>`
   border-color: ${(props) => {
-    const { isOpen } = props;
-    return isOpen
+    const { handleopen } = props;
+    console.log(handleopen);
+
+    return handleopen
       ? 'transparent transparent #222222;'
       : '#222222 transparent transparent';
   }};
   border-width: ${(props) => {
-    const { isOpen } = props;
-    return isOpen ? '0 5px 5px' : '5px 5px 0;';
+    const { handleopen } = props;
+    return handleopen ? '0 5px 5px' : '5px 5px 0;';
   }};
   border-style:solid;
   content:'';
@@ -151,7 +153,6 @@ const Dropdown = (props: DropdownProps) => {
       if (dropdownRef.current) {
         //ドロップダウン内の全ての要素を取得
         const elems = dropdownRef.current.querySelectorAll('*');
-        console.log(elems);
 
         for (let i = 0; i < elems.length; i++) {
           //クリックされた要素とドロップダウン内の要素が一致する場合、
@@ -170,7 +171,7 @@ const Dropdown = (props: DropdownProps) => {
 
   //ドロップダウンの開閉
   const handleMouseDown = (e: React.SyntheticEvent) => {
-    setIsOpen((isOpen) => !isOpen);
+    setIsOpen((prev) => !prev);
     e.stopPropagation();
   };
 
@@ -226,7 +227,7 @@ const Dropdown = (props: DropdownProps) => {
           onChange={() => onChange && onChange(selectedItem)}
         />
 
-        <DropdownArrow isOpen={isOpen} />
+        <DropdownArrow handleopen={isOpen} />
       </DropdownControl>
 
       {/* ドロップダウンを表示 */}
