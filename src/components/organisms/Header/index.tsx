@@ -108,7 +108,6 @@ const Header = () => {
           <NavLink>
             <CustomLink href="/cart" passHref>
               <Anchor>
-                {' '}
                 <BadgeIconButton
                   icon={<ShoppingCartIcon size={24} />}
                   size="24px"
