@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from '../src/themes';
 import * as NextImage from 'next/image';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 const preview: Preview = {
   parameters: {
@@ -51,7 +52,7 @@ ol,ul{
 
 //next/imageの設定
 Image.propTypes = {
-  unoptimized: null,
+  unoptimized: PropTypes.bool,
 };
 
 Image.defaultProps = {

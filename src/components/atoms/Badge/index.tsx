@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { toPropValue } from '@/utils/styles';
 
 const BadgeWrapper = styled.div<{ backgroundColor: string }>`
   border-radius: 20px;
@@ -7,7 +8,9 @@ const BadgeWrapper = styled.div<{ backgroundColor: string }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.backgroundColor};
+  ${(props) => {
+    return toPropValue('background-color', props.backgroundColor, props.theme);
+  }}
 `;
 
 //バッジ内のテキスト

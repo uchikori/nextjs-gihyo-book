@@ -26,7 +26,7 @@ const HeaderRoot = styled.header`
 //ナビゲーション
 const Nav = styled(Flex)`
   & > span:not(:first-child) {
-    margin-left: ${({ theme }) => theme.space[2]}px;
+    margin-left: ${({ theme }) => theme.space[2]};
   }
 `;
 
@@ -42,6 +42,9 @@ const Anchor = styled(Text)`
     text-decoration: underline;
   }
 `;
+const CustomLink = styled(Link)`
+  text-decoration: none;
+`;
 
 /**
  * ヘッダー
@@ -49,6 +52,7 @@ const Anchor = styled(Text)`
 const Header = () => {
   //コンテキストからカートの中身を取得
   const { cart } = useShoppingCartContext();
+  //認証コンテキストから認証ユーザーのデータとロード状態を取得
   const { authUser, isLoading } = useAuthContext();
 
   return (
@@ -57,53 +61,54 @@ const Header = () => {
         <Nav as="nav" height="56px" alignItems="center">
           <NavLink>
             <Link href="/" passHref>
-              <Anchor as="a">
+              <Anchor>
                 <AppLogo />
               </Anchor>
             </Link>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search" passHref>
-                <Anchor as="a">すべて</Anchor>
-              </Link>
+              <CustomLink href="" passHref>
+                <Anchor>すべて</Anchor>
+              </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/clothes" passHref>
-                <Anchor as="a">トップス</Anchor>
-              </Link>
+              <CustomLink href="/clothes" passHref>
+                <Anchor>トップス</Anchor>
+              </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/book" passHref>
-                <Anchor as="a">本</Anchor>
-              </Link>
+              <CustomLink href="/book" passHref>
+                <Anchor>本</Anchor>
+              </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search/shoes" passHref>
-                <Anchor as="a">シューズ</Anchor>
-              </Link>
+              <CustomLink href="/shoes" passHref>
+                <Anchor>シューズ</Anchor>
+              </CustomLink>
             </Box>
           </NavLink>
         </Nav>
         <Nav as="nav" height="56px" alignItems="center">
           <NavLink>
-            <Box display={{ base: 'none', md: 'block' }}>
-              <Link href="/search" passHref>
-                <Anchor as="a">
+            <Box display={{ base: 'block', md: 'none' }}>
+              <CustomLink href="/search" passHref>
+                <Anchor>
                   <SearchIcon />
                 </Anchor>
-              </Link>
+              </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
-            <Link href="/cart" passHref>
-              <Anchor as="a">
+            <CustomLink href="/cart" passHref>
+              <Anchor>
+                {' '}
                 <BadgeIconButton
                   icon={<ShoppingCartIcon size={24} />}
                   size="24px"
@@ -111,14 +116,14 @@ const Header = () => {
                   badgeBackgroundColor="primary"
                 />
               </Anchor>
-            </Link>
+            </CustomLink>
           </NavLink>
           <NavLink>
             {(() => {
               if (authUser) {
                 return (
-                  <Link href={`/user/${authUser.id}`} passHref>
-                    <Anchor as="a">
+                  <CustomLink href={`/user/${authUser.id}`} passHref>
+                    <Anchor>
                       <ShapeImage
                         shape="circle"
                         src={authUser.profileImageUrl}
@@ -126,27 +131,28 @@ const Header = () => {
                         height={24}
                         data-testid="profile-shape-image"
                         alt={authUser.displayName}
+                        unoptimized={true}
                       />
                     </Anchor>
-                  </Link>
+                  </CustomLink>
                 );
               } else if (isLoading) {
                 return <Spinner size={20} strokeWidth={2} />;
               } else {
                 return (
-                  <Link href="/signin" passHref>
-                    <Anchor as="a">
+                  <CustomLink href="/signin" passHref>
+                    <Anchor>
                       <PersonIcon size={24} />
                     </Anchor>
-                  </Link>
+                  </CustomLink>
                 );
               }
             })()}
           </NavLink>
           <NavLink>
-            <Link href="/sell" passHref>
-              <Button as="a">出品</Button>
-            </Link>
+            <CustomLink href="/sell" passHref>
+              <Button> 出品</Button>
+            </CustomLink>
           </NavLink>
         </Nav>
       </Flex>
