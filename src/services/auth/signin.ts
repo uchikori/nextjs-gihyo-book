@@ -20,7 +20,7 @@ export type SignParams = {
  * @param params パラメーター
  * @returns ログインユーザー
  */
-const singin = async (
+const signin = async (
   context: ApiContext,
   params: SignParams,
 ): Promise<User> => {
@@ -37,4 +37,4 @@ const singin = async (
   );
 };
 
-export default singin;
+export default signin;

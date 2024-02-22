@@ -156,7 +156,6 @@ const Dropzone = (props: DropzoneProps) => {
     height = '200px',
     hasError,
   } = props;
-  console.log(props);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);

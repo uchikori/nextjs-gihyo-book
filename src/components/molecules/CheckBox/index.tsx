@@ -32,8 +32,6 @@ const Label = styled.label`
  */
 const CheckBox = (props: CheckBoxProps) => {
   const { id, label, onChange, checked, ...rest } = props;
-  console.log(props);
-
   const [isChecked, setIsChecked] = useState(checked);
   const ref = useRef<HTMLInputElement>(null);
 
@@ -44,8 +42,6 @@ const CheckBox = (props: CheckBoxProps) => {
       //チェックボックスを強制的にクリック
       ref.current?.click();
       setIsChecked((isChecked) => !isChecked);
-      console.log(ref);
-      console.log(isChecked);
     },
     [ref, setIsChecked],
   );

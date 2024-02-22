@@ -46,7 +46,6 @@ export interface ImagePreviewProps {
  */
 const ImagePreview = (props: ImagePreviewProps) => {
   const { src, alt, height, width, onRemoveFn } = props;
-  console.log(props);
 
   const handleCloseClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
