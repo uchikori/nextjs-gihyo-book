@@ -13,13 +13,13 @@ const ScaleEffectImageContainer = styled.div<{
   height: Responsive<string>;
 }>`
   overflow: hidden;
-  ${(props) => {
-    const { width, theme } = props;
+  ${({ width, theme }) => {
+    console.log(width);
     return toPropValue('width', width, theme);
   }}
-  ${(props) => {
-    const { height, theme } = props;
-    return toPropValue('heihgt', height, theme);
+  ${({ height, theme }) => {
+    console.log(height);
+    return toPropValue('height', height, theme);
   }}
 `;
 
@@ -34,19 +34,24 @@ const ScaleEffectImage = styled(Image)`
 /**
  * スケールイメージ
  */
-const ScaleImage = (props: ScaleImageProps) => {
-  const { containerWidth, containerHeight, ...rest } = props;
+const ScaleImage = ({
+  containerWidth,
+  containerHeight,
+  ...props
+}: ScaleImageProps) => {
+  console.log(props);
+
   return (
     <ScaleEffectImageContainer
-      width={containerWidth ?? `${rest.width}` ?? '320px'}
-      height={containerHeight ?? `${rest.height}` ?? '320px'}
+      width={containerWidth ?? `${props.width}` ?? `320px`}
+      height={containerHeight ?? `${props.height}` ?? `320px`}
     >
       <ScaleEffectImage
         quality="85"
-        // alt={rest.alt ?? 'ProductImage'}
-        height={rest.height ?? 320}
-        width={rest.width ?? 320}
-        {...rest}
+        // alt={props.alt ?? 'ProductImage'}
+        height={props.height ?? 320}
+        width={props.width ?? 320}
+        {...props}
       />
     </ScaleEffectImageContainer>
   );
