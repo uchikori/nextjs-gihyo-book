@@ -28,9 +28,12 @@ const SigninForm = (props: SigninFormProps) => {
     formState: { errors },
   } = useForm<SigninFormData>();
 
+  //フォームの入力内容(usernameとpassword)を受け取り
+  //親コンポーネントから受け取ったonSignin関数を実行する
   const onSubmit = (data: SigninFormData) => {
     const { username, password } = data;
 
+    //親コンポーネントのonSigninを呼び出す(handleSignin)
     onSignin && onSignin(username, password);
   };
 
@@ -39,7 +42,7 @@ const SigninForm = (props: SigninFormProps) => {
       <Box marginBottom={1}>
         {/* サインインユーザー名の入力 */}
         <Input
-          name="username"
+          // name="username"
           type="text"
           placeholder="ユーザー名"
           $haserror={!!errors?.username}
@@ -54,7 +57,7 @@ const SigninForm = (props: SigninFormProps) => {
       <Box marginBottom={2}>
         {/* サインインパスワードの入力 */}
         <Input
-          name="password"
+          // name="password"
           type="password"
           placeholder="パスワード"
           $haserror={!!errors?.password}

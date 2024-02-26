@@ -1,10 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-//fetcherはPromiseオブジェクトを返す非同期関数
 export const fetcher = async (
   resource: RequestInfo,
   init?: RequestInit,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> => {
   const res = await fetch(resource, init);
+  console.log(resource);
+  console.log(init);
+  console.log(res);
+
   if (!res.ok) {
     const errorRes = await res.json();
     const error = new Error(
@@ -12,5 +15,6 @@ export const fetcher = async (
     );
     throw error;
   }
+
   return res.json();
 };

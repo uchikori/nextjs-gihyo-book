@@ -4,24 +4,27 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+  DocumentInitialProps,
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 // デフォルトのDocumentをMyDocumentで上書き
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
-        })
+        });
 
       // 初期値を流用
-      const initialProps = await Document.getInitialProps(ctx)
+      const initialProps = await Document.getInitialProps(ctx);
 
       // initialPropsに加えて、styleを追加して返す。
       return {
@@ -32,20 +35,20 @@ export default class MyDocument extends Document {
           // styled-componentsのstyle
           sheet.getStyleElement(),
         ],
-      }
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
-  render() {
-    return (
-      <Html lang="ja">
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+  // render() {
+  //   return (
+  //     <Html lang="ja">
+  //       <Head />
+  //       <body>
+  //         <Main />
+  //         <NextScript />
+  //       </body>
+  //     </Html>
+  //   );
+  // }
 }

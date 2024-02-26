@@ -4,8 +4,6 @@ import styled, { css } from 'styled-components';
 const StyledSpinner = styled.svg<{ size: number; isautocentering: boolean }>`
   animation: rotate 2s linear infinite;
   ${(props) => {
-    console.log(props);
-
     const { isautocentering, size } = props;
     return isautocentering
       ? css`

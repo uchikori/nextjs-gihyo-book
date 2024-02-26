@@ -1,7 +1,15 @@
 // import "@/styles/globals.css";
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import { createGlobalStyle } from 'styled-components'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { SWRConfig } from 'swr';
+import GlobalSpinner from '@/components/organisms/GlobalSpinner';
+import { AuthContextProvider } from '@/contexts/AuthContext';
+import GlobalSpinnerContextProvider from '@/contexts/GlobalSpinnerContext';
+import { ShoppingCartContextProvider } from '@/contexts/ShoppingCartContext';
+import { theme } from '@/themes';
+import type { ApiContext } from '@/types';
+import { fetcher } from '@/utils';
 
 const GlobalStyle = createGlobalStyle`
 html,
@@ -23,12 +31,16 @@ a{
 ol,ul{
   list-style:none;
 }
-`
+`;
 
-export default function App({ Component, pageProps }: AppProps) {
+const context: ApiContext = {
+  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/proxy',
+};
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <meta key="charset" name="charset" content="utf-8" />
         <meta
           key="viewport"
@@ -37,9 +49,20 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
-      </Head>
+      </Head> */}
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        {/* <SWRConfig value={{ fetcher: fetcher }}> */}
+        {/* <GlobalSpinnerContextProvider>
+          <ShoppingCartContextProvider> */}
+        <AuthContextProvider context={context}>
+          {/* <GlobalSpinner /> */}
+          <Component {...pageProps} />
+        </AuthContextProvider>
+        {/* </ShoppingCartContextProvider>
+        </GlobalSpinnerContextProvider> */}
+        {/* </SWRConfig> */}
+      </ThemeProvider>
     </>
-  )
+  );
 }

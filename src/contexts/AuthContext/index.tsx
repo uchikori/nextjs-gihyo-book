@@ -52,6 +52,7 @@ export const AuthContextProvider = (
 
   //サインイン
   const signInInternal = async (username: string, password: string) => {
+    console.log('サインイン関数が実行されました');
     //@services/auth/signinを使用して認証を実行(json形式のユーザー情報を返す)
     await signin(context, { username, password });
     await mutate();
