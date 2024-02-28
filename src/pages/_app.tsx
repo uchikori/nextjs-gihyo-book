@@ -52,16 +52,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Head> */}
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        {/* <SWRConfig value={{ fetcher: fetcher }}> */}
-        {/* <GlobalSpinnerContextProvider>
-          <ShoppingCartContextProvider> */}
-        <AuthContextProvider context={context}>
-          {/* <GlobalSpinner /> */}
-          <Component {...pageProps} />
-        </AuthContextProvider>
-        {/* </ShoppingCartContextProvider>
-        </GlobalSpinnerContextProvider> */}
-        {/* </SWRConfig> */}
+        <SWRConfig value={{ fetcher: fetcher }}>
+          <GlobalSpinnerContextProvider>
+            <ShoppingCartContextProvider>
+              <AuthContextProvider context={context}>
+                <GlobalSpinner />
+                <Component {...pageProps} />
+              </AuthContextProvider>
+            </ShoppingCartContextProvider>
+          </GlobalSpinnerContextProvider>
+        </SWRConfig>
       </ThemeProvider>
     </>
   );

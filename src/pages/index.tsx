@@ -1,112 +1,141 @@
-import { Inter } from 'next/font/google';
-import Head from 'next/head';
-import Image from 'next/image';
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import Link from 'next/link';
+import Text from '@/components/atoms/Text';
 import Box from '@/components/layout/Box';
-import styles from '@/styles/Home.module.css';
-import { theme } from '@/themes';
+import Flex from '@/components/layout/Flex';
+import ProductCard from '@/components/organisms/ProductCard';
+import ProductCardCarousel from '@/components/organisms/ProductCardCarousel';
+import Layout from '@/components/templates/Layout';
+import getAllProducts from '@/services/products/get-all-products';
+import { ApiContext, Product } from '@/types';
 
-const inter = Inter({ subsets: ['latin'] });
+type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-export default function Home() {
-  return (
-    <>
-      <main className={`${styles.main} ${inter.className}`}>
-        <Box marginTop={{ base: 1, md: 2 }} theme={theme}>
-          <div className={styles.description}>
-            <p>
-              Get started by editing&nbsp;
-              <code className={styles.code}>src/pages/index.tsx</code>
-            </p>
-            <div>
-              <a
-                href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                By{' '}
-                <Image
-                  src="/vercel.svg"
-                  alt="Vercel Logo"
-                  className={styles.vercelLogo}
-                  width={100}
-                  height={24}
-                  priority
+const HomePage: NextPage<HomePageProps> = (props: HomePageProps) => {
+  const { bookProducts, clothesProducts, shoesProducts } = props;
+
+  //商品カードカルーセル
+  const renderProductCardCarousel = (products: Product[]) => {
+    return (
+      <ProductCardCarousel>
+        {products.map((product, index) => {
+          return (
+            <Box key={index} paddingLeft={index === 0 ? 0 : 2}>
+              <Link href={`/products/${product.id}`} passHref>
+                <ProductCard
+                  variant="small"
+                  title={product.title}
+                  price={product.price}
+                  imageUrl={product.imageUrl}
+                  blurDataURL={product.blurDataUrl}
                 />
-              </a>
-            </div>
-          </div>
+              </Link>
+            </Box>
+          );
+        })}
+      </ProductCardCarousel>
+    );
+  };
 
-          <div className={styles.center}>
-            <Image
-              className={styles.logo}
-              src="/next.svg"
-              alt="Next.js Logo"
-              width={180}
-              height={37}
-              priority
-            />
-          </div>
-
-          <div className={styles.grid}>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
+  return (
+    <Layout>
+      <Flex padding={2} justifyContent={'center'} backgroundColor={'primary'}>
+        <Flex
+          width={{ base: '100%', md: '1040px' }}
+          justifyContent={'center'}
+          alignItems={'center'}
+          flexDirection={{ base: 'column', md: 'row' }}
+        >
+          <Box width="100%">
+            <Text
+              as="h1"
+              $marginbottom={0}
+              $color="white"
+              $variant="extraLarge"
             >
-              <h2>
-                Docs <span>-&gt;</span>
-              </h2>
-              <p>
-                Find in-depth information about Next.js features and&nbsp;API.
-              </p>
-            </a>
-
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
+              Gihyo Csで
+            </Text>
+            <Text
+              as="h1"
+              $marginbottom={0}
+              $color="white"
+              $variant="extraLarge"
             >
-              <h2>
-                Learn <span>-&gt;</span>
-              </h2>
-              <p>
-                Learn about Next.js in an interactive course with&nbsp;quizzes!
-              </p>
-            </a>
-
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Templates <span>-&gt;</span>
-              </h2>
-              <p>
-                Discover and deploy boilerplate example Next.js&nbsp;projects.
-              </p>
-            </a>
-
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Deploy <span>-&gt;</span>
-              </h2>
-              <p>
-                Instantly deploy your Next.js site to a shareable URL
-                with&nbsp;Vercel.
-              </p>
-            </a>
-          </div>
+              お気に入りのアイテムを見つけよう
+            </Text>
+          </Box>
+          <Box width="100%">
+            <Text as="p" $color="white" $variant="mediumLarge">
+              Gihyo
+              C2Cは実践的なNext.jsアプリケーション開発で使われるデモアプリです。モックサーバを使用しています。
+              ソースコードは
+              <Text
+                as="a"
+                style={{ textDecoration: 'underline' }}
+                target="_blank"
+                href="https://github.com/gihyo-book/ts-nextbook-app"
+                $color="white"
+                $variant="mediumLarge"
+              >
+                こちら
+              </Text>
+              のGithubからダウンロードできます。
+            </Text>
+            <Text as="p" $color="white" $variant="mediumLarge">
+              このアプリはTypeScript/Next.jsで作成されており、バックエンドのモックAPIはjson-serverが使用されています。
+            </Text>
+          </Box>
+        </Flex>
+      </Flex>
+      <Flex paddingBottom={2} justifyContent="center">
+        <Box
+          paddingLeft={{ base: 2, md: 0 }}
+          paddingRight={{ base: 2, md: 0 }}
+          width={{ base: '100%', md: '1040px' }}
+        >
+          <Box marginBottom={3}>
+            <Text as="h2" $variant="large">
+              トップス
+            </Text>
+            {renderProductCardCarousel(clothesProducts)}
+          </Box>
+          <Box marginBottom={3}>
+            <Text as="h2" $variant="large">
+              ブック
+            </Text>
+            {renderProductCardCarousel(bookProducts)}
+          </Box>
+          <Box marginBottom={3}>
+            <Text as="h2" $variant="large">
+              シューズ
+            </Text>
+            {renderProductCardCarousel(shoesProducts)}
+          </Box>
         </Box>
-      </main>
-    </>
+      </Flex>
+    </Layout>
   );
-}
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const context: ApiContext = {
+    apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
+  };
+
+  const [clothesProducts, bookProducts, shoesProducts] = await Promise.all([
+    getAllProducts(context, { category: 'clothes', limit: 6, page: 1 }),
+    getAllProducts(context, { category: 'book', limit: 6, page: 1 }),
+    getAllProducts(context, { category: 'shoes', limit: 6, page: 1 }),
+  ]);
+
+  return {
+    props: {
+      clothesProducts,
+      bookProducts,
+      shoesProducts,
+    },
+    revalidate: 30,
+  };
+};
+
+export default HomePage;
