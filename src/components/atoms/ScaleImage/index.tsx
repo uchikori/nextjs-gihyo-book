@@ -14,11 +14,9 @@ const ScaleEffectImageContainer = styled.div<{
 }>`
   overflow: hidden;
   ${({ width, theme }) => {
-    console.log(width);
     return toPropValue('width', width, theme);
   }}
   ${({ height, theme }) => {
-    console.log(height);
     return toPropValue('height', height, theme);
   }}
 `;
@@ -39,8 +37,6 @@ const ScaleImage = ({
   containerHeight,
   ...props
 }: ScaleImageProps) => {
-  console.log(props);
-
   return (
     <ScaleEffectImageContainer
       width={containerWidth ?? `${props.width}` ?? `320px`}

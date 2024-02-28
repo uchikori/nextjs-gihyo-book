@@ -16,7 +16,6 @@ interface BreadcrumbProps {
  */
 const Breadcrumb = (props: BreadcrumbProps) => {
   const { children } = props;
-  console.log(props);
 
   return <BreadcrumbRoot as="ol">{children}</BreadcrumbRoot>;
 };

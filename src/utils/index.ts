@@ -4,9 +4,6 @@ export const fetcher = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> => {
   const res = await fetch(resource, init);
-  console.log(resource);
-  console.log(init);
-  console.log(res);
 
   if (!res.ok) {
     const errorRes = await res.json();
