@@ -107,9 +107,6 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     getAllProducts(context, { userId }),
   ]);
 
-  console.log(user);
-  console.log(products);
-
   return {
     props: {
       id: userId,

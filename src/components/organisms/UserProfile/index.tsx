@@ -23,7 +23,7 @@ export interface UserProfileProps {
   /**
    * ユーザーの説明
    */
-  description: string;
+  description?: string;
 }
 
 /**
