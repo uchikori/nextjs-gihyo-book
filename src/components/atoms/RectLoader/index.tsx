@@ -11,7 +11,6 @@ interface RectLoaderProps extends IContentLoaderProps {
  */
 const RectLoader = (props: RectLoaderProps) => {
   const { width, height, ...rest } = props;
-  console.log(props);
 
   return (
     <ContentLoader

@@ -13,16 +13,14 @@ export type FilterGroupProps = {
   items: Item[];
   value?: string[];
   defaultValue?: string[];
-  onChange?: (values: string[]) => void;
+  onChangeFn?: (values: string[]) => void;
 };
 
 /**
  * フィルターグループ
  */
 const FilterGroup = (props: FilterGroupProps) => {
-  const { title, items, value = [], defaultValue = [], onChange } = props;
-  console.log(props);
-
+  const { title, items, value = [], defaultValue = [], onChangeFn } = props;
   const [selected, setSelected] = useState(value ?? defaultValue);
 
   useEffect(() => {
@@ -32,8 +30,6 @@ const FilterGroup = (props: FilterGroupProps) => {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.name;
-
-      console.log('チェックされたよ');
 
       //新たな選択配列を作成
       const newSelected = e.target.checked
@@ -45,10 +41,10 @@ const FilterGroup = (props: FilterGroupProps) => {
       //selected配列を生成
       setSelected(newSelected);
 
-      //onChangeを呼び出す
-      onChange && onChange(newSelected);
+      //onChangeFnを呼び出す
+      onChangeFn && onChangeFn(newSelected);
     },
-    [onChange, selected],
+    [onChangeFn, selected],
   );
 
   return (

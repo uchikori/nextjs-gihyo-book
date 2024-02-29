@@ -68,28 +68,28 @@ const Header = () => {
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <CustomLink href="" passHref>
+              <CustomLink href="/search" passHref>
                 <Anchor>すべて</Anchor>
               </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <CustomLink href="/clothes" passHref>
+              <CustomLink href="/search/clothes" passHref>
                 <Anchor>トップス</Anchor>
               </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <CustomLink href="/book" passHref>
+              <CustomLink href="/search/book" passHref>
                 <Anchor>本</Anchor>
               </CustomLink>
             </Box>
           </NavLink>
           <NavLink>
             <Box display={{ base: 'none', md: 'block' }}>
-              <CustomLink href="/shoes" passHref>
+              <CustomLink href="/search/shoes" passHref>
                 <Anchor>シューズ</Anchor>
               </CustomLink>
             </Box>
