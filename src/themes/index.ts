@@ -1,3 +1,4 @@
+import { DefaultTheme } from 'styled-components';
 import colors from './colors';
 import fontSize from './fontSize';
 import letterSpacing from './letterSpacing';
@@ -10,4 +11,4 @@ export const theme = {
   colors,
   letterSpacing,
   lineHeights,
-} as const;
+} as DefaultTheme;

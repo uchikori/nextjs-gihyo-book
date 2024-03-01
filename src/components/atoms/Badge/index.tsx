@@ -9,7 +9,7 @@ const BadgeWrapper = styled.div<{ backgroundColor: string }>`
   align-items: center;
   justify-content: center;
   ${(props) => {
-    return toPropValue('background-color', props.backgroundColor, props.theme);
+    return toPropValue('background-color', props.backgroundColor);
   }}
 `;
 

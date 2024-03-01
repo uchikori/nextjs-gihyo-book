@@ -9,7 +9,6 @@ import {
   LineHeights,
   Space,
 } from '@/utils/styles';
-// import { theme } from '@/themes';
 
 //ボタンのバリアント
 export type ButtonVariant = 'primary' | 'secondary' | 'danger';

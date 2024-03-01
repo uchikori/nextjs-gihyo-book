@@ -1,7 +1,6 @@
 import { afterEach } from 'node:test';
 import {
   render,
-  SelectorMatcherOptions,
   screen,
   fireEvent,
   RenderResult,
