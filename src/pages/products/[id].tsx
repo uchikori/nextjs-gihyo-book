@@ -114,13 +114,15 @@ const ProductPage: NextPage<ProductPageProps> = (props: ProductPageProps) => {
           >
             {/* 商品概要を表示、改行ごとにテキストコンポーネントでラップ */}
             <Box>
-              {product.description.split('\n').map((item, index) => {
-                return (
-                  <Text key={index} as="p">
-                    {item}
-                  </Text>
-                );
-              })}
+              {product.description
+                .split('\n')
+                .map((item: string, index: number) => {
+                  return (
+                    <Text key={index} as="p">
+                      {item}
+                    </Text>
+                  );
+                })}
             </Box>
             <AddToCartButtonContainer
               product={product}
@@ -146,7 +148,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true,
   };
 };
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   };
