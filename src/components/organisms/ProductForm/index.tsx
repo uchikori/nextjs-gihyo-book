@@ -85,7 +85,6 @@ const ProductForm = (props: ProductFormProps) => {
           {/* 商品タイトルの入力 */}
           <Input
             type="text"
-            name="title"
             placeholder="商品のタイトル"
             $haserror={!!errors.title}
             {...register('title', { required: true })}
@@ -184,7 +183,6 @@ const ProductForm = (props: ProductFormProps) => {
           </Text>
           {/* 価格の入力 */}
           <Input
-            name="price"
             type="number"
             placeholder="100"
             $haserror={!!errors.price}

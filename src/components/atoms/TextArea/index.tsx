@@ -77,8 +77,6 @@ const Textarea = (props: TextAreaProps) => {
       const textareaLineHeight = 24;
       const previousRows = e.target.rows;
 
-      console.log(e.target.scrollHeight);
-
       e.target.rows = minRows; //行数のリセット
 
       //テキスト全体を表示するのに必要な行数
@@ -86,7 +84,6 @@ const Textarea = (props: TextAreaProps) => {
         //テキストエリア全体の高さを行の高さで割る
         e.target.scrollHeight / textareaLineHeight,
       );
-      console.log(currentRows);
 
       //現在の行数が前の行数と同じなら
       if (currentRows === previousRows) {

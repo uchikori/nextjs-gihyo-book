@@ -43,7 +43,6 @@ const DropdownPlaceholder = styled.div`
 const DropdownArrow = styled.div<{ handleopen?: boolean }>`
   border-color: ${(props) => {
     const { handleopen } = props;
-    console.log(handleopen);
 
     return handleopen
       ? 'transparent transparent #222222;'
