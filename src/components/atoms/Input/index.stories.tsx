@@ -44,7 +44,4 @@ export const Error: Story = {
   render: (args) => {
     return <Input {...args} />;
   },
-  args: {
-    $haserror: true,
-  },
 };

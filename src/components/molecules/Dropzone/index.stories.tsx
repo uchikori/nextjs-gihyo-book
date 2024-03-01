@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import Dropzone from '.';
+import Dropzone, { DropzoneProps } from './index';
 import Button from '@/components/atoms/Button';
 import Box from '@/components/layout/Box';
 
@@ -58,7 +58,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const DropzoneWithHooks = (args) => {
+const DropzoneWithHooks = (args: DropzoneProps) => {
   const [files, setFiles] = useState<File[]>([]);
 
   const handleDrop = (files: File[]) => {

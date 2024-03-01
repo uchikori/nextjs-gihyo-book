@@ -78,7 +78,7 @@ const ProductPage: NextPage<ProductPageProps> = (props: ProductPageProps) => {
             </BreadcrumbItem>
             <BreadcrumbItem>
               <Link href={`/search/${product.category}`}>
-                {categoryNamDict[product.category]}
+                {categoryNamDict[product.category as Category]}
               </Link>
             </BreadcrumbItem>
             <BreadcrumbItem>{product.title}</BreadcrumbItem>

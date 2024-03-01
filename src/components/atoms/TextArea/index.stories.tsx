@@ -63,6 +63,11 @@ export const Normal: Story = {
   render: (args) => {
     return <Textarea {...args} />;
   },
+  args: {
+    minRows: 5,
+    maxRows: 10,
+    $haserror: false,
+  },
 };
 
 export const Error: Story = {
@@ -70,6 +75,8 @@ export const Error: Story = {
     return <Textarea {...args} />;
   },
   args: {
+    minRows: 5,
+    maxRows: 10,
     $haserror: true,
   },
 };

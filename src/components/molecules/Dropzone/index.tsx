@@ -41,7 +41,7 @@ type FileType =
   | 'video/quicktime'
   | 'application/pdf';
 
-interface DropzoneProps {
+export interface DropzoneProps {
   /**
    * 入力ファイル
    */
@@ -277,18 +277,18 @@ const Dropzone = (props: DropzoneProps) => {
   );
 };
 
-Dropzone.defaultProps = {
-  acceptedFileTypes: [
-    'image/png',
-    'image/jpeg',
-    'image/jpg',
-    'image/gif',
-    'image/webp',
-    'video/mp4',
-    'video/quicktime',
-    'application/pdf',
-  ],
-  hasError: false,
-};
+// Dropzone.defaultProps = {
+//   acceptedFileTypes: [
+//     'image/png',
+//     'image/jpeg',
+//     'image/jpg',
+//     'image/gif',
+//     'image/webp',
+//     'video/mp4',
+//     'video/quicktime',
+//     'application/pdf',
+//   ],
+//   hasError: false,
+// };
 
 export default Dropzone;

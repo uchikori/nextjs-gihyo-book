@@ -44,6 +44,7 @@ const Input = styled.input<{ $haserror?: boolean; $hasborder?: boolean }>`
 
 Input.defaultProps = {
   $hasborder: true,
+  $haserror: false,
 };
 
 export default Input;
