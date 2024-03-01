@@ -23,8 +23,9 @@ const AddToCartButtonContainer = (props: AddToCartButtonContainerProps) => {
   const { cart, addProductToCart } = useShoppingCartContext();
   const handleAddToCartButtonClick = () => {
     const productId = Number(product.id);
+    //cart配列内でproductIdと一致するものを探す
     const result = cart.findIndex((v) => v.id === productId);
-
+    //一致するものがなければ商品を追加する
     if (result === -1) {
       addProductToCart(product);
     }

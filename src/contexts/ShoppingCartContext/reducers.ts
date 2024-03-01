@@ -19,15 +19,17 @@ const addProductToCart = (product: Product, state: Product[]) => {
 
 /**
  * 商品削除アクション
- * @param productID 商品のID
+ * @param productId 商品のID
  * @param state 現在の状態
  * @returns 次の状態
  */
-const removeProductFromCart = (productID: number, state: Product[]) => {
+const removeProductFromCart = (productId: number, state: Product[]) => {
   //削除した商品のindex番号を取得(商品カートに入っているIDと引数で受け取ったproductIDが同じもののインデックス番号を取得)
-  const removedItemIndex = state.findIndex((item) => item.id === productID);
+  const removedItemIndex = state.findIndex((item) => item.id === productId);
 
+  //削除対象のindex番号から数えて1つ目を削除
   state.splice(removedItemIndex, 1);
+  //削除後の配列を返却
   return state;
 
   // const newState = [...state];
