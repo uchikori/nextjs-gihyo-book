@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // compiler: {
-  //   styledComponents: true,
-  // },
   compiler: (() => {
     let compilerConfig = {
       // styledComponentsの有効化
@@ -30,4 +27,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

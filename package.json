@@ -64,5 +64,8 @@
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5",
     "typescript-eslint": "^0.0.1-alpha.0"
+  },
+  "volta": {
+    "node": "18.17.1"
   }
 }

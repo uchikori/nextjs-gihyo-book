@@ -7,8 +7,9 @@ import useSearch from '@/services/products/use-search';
 import type { ApiContext, Category, Condition } from '@/types';
 
 const context: ApiContext = {
-  apiRootUrl: process.env.API_BASE_URL || '/api/proxy',
+  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || '/api/proxy/',
 };
+console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
 console.log(context);
 
 interface ProductCardListContainerProps {

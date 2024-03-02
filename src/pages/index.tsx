@@ -121,6 +121,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const context: ApiContext = {
     apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   };
+  console.log(context);
 
   const [clothesProducts, bookProducts, shoesProducts] = await Promise.all([
     getAllProducts(context, { category: 'clothes', limit: 6, page: 1 }),

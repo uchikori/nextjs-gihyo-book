@@ -29,7 +29,7 @@ const categoryNamDict: Record<Category, string> = {
 };
 
 const context: ApiContext = {
-  apiRootUrl: process.env.API_BASE_URL || '/api/proxy',
+  apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || '/api/proxy',
 };
 
 console.log(context);
