@@ -119,7 +119,7 @@ const HomePage: NextPage<HomePageProps> = (props: HomePageProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const context: ApiContext = {
-    apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
+    apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000',
   };
   console.log(context);
 

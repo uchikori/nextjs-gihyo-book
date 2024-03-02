@@ -139,7 +139,7 @@ const ProductPage: NextPage<ProductPageProps> = (props: ProductPageProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const context: ApiContext = {
-    apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
+    apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000',
   };
   //全商品を取得
   const products = await getAllProducts(context, {});
@@ -154,7 +154,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
   const context: ApiContext = {
-    apiRootUrl: process.env.API_BASE_URL || 'http://localhost:5000',
+    apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000',
   };
 
   if (!params) {
