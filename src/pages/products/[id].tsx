@@ -32,6 +32,8 @@ const context: ApiContext = {
   apiRootUrl: process.env.API_BASE_URL || '/api/proxy',
 };
 
+console.log(context);
+
 type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ProductPage: NextPage<ProductPageProps> = (props: ProductPageProps) => {
