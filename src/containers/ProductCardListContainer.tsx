@@ -9,8 +9,6 @@ import type { ApiContext, Category, Condition } from '@/types';
 const context: ApiContext = {
   apiRootUrl: process.env.NEXT_PUBLIC_API_BASE_URL || '/api/proxy/',
 };
-console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
-console.log(context);
 
 interface ProductCardListContainerProps {
   /**
